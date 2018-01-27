@@ -23,6 +23,15 @@
   border: solid 1px black;
 }
 
+.under-top-bar {
+  background-color: #CFF;
+  border: 1px solid black;
+  position:absolute;
+  height: calc(100vh - 58px);
+  width:100%;
+  top:58px;
+}
+
 .App-title {
   font-size: 1.5em;
 }

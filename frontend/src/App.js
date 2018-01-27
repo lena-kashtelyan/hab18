@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import FullPageHover from './full_page_hover.js';
+import UnderTopBar from './under_top_bar.js';
 import './App.css';
 var $ = require('jquery');
 
@@ -42,7 +43,7 @@ class App extends Component {
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>
-          <FullPageHover content={content}/>
+          <UnderTopBar content={content}/>
         </div>
       );
     } else {
