@@ -8,3 +8,5 @@ row=r.fetch_row()
 print(row)
 row=r.fetch_row()
 print(row)
+
+def checkuser

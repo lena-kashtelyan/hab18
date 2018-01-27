@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template, jsonify, url_for, redirect, g
 import random
+import json
 # app = Flask(__name__)
 # from .models import User
 # from index import app, db
@@ -16,10 +17,11 @@ def get_hello():
 def index():
     return render_template('index.html')
 
-@app.route("/hello", methods=['POST'])
-def hello():
-    print(request.get_json())
-    return get_hello()
+@app.route("/check", methods=['POST'])
+def check_user():
+    username = json.JSONDecoder(request.get_json())['username']
+    print(username)
+    return true
 
 # @app.route('/<path:path>', methods=['GET'])
 # def any_root_path(path):
