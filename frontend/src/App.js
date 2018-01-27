@@ -21,11 +21,6 @@ class App extends Component {
     this.state = {loggedIn: false};
     // This binding is necessary to make `this` work in the callback
     this.getPythonHello = this.getPythonHello.bind(this);
-    this.personaliseGreeting = this.personaliseGreeting.bind(this);
-  }
-
-  personaliseGreeting(greet) {
-    this.setState({greeting: greet});
   }
 
   getPythonHello() {
@@ -40,7 +35,7 @@ class App extends Component {
   // <button onClick={this.getPythonHello}>{this.state.greeting}</button>
 
   render() {
-    if (this.state.LoggedIn) {
+    if (this.state.loggedIn) {
       var content = <p>Homepage</p>;
       return(
         <div className="App">
