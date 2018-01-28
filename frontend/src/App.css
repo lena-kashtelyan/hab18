@@ -21,6 +21,8 @@
   height: 58px;
   color: white;
   border: solid 1px black;
+  display: flex;
+  justify-content: space-between;
 }
 
 .under-top-bar {
@@ -87,6 +89,31 @@
 .menu {
   float: right;
 }
+
+.ui.labeled.icon.button>.icon {
+  background-color: transparent !important;
+}
+
+.ui.avatar.image {
+  height: 2.8em;
+  width: 2.8em;
+}
+
+.logo {
+  font-family: 'Chivo', sans-serif;
+  font-size: 24px;
+  margin-top: 18px;
+  margin-left: 20px;
+}
+
+button {
+  padding:20px;
+  background: transparent;
+  border: none;
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
+}
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
