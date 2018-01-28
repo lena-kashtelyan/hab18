@@ -49,7 +49,7 @@
 .slider {
   position: relative;
   display: block;
-  height: 100%;
+  height: calc(100% - 58px);
   width: 100%;
 }
 
@@ -114,6 +114,8 @@ button {
 
 .topbar-button {
   padding: 20px;
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
 }
 
 .visible-field {
@@ -169,4 +171,47 @@ button {
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.slick-dots {
+  bottom: 12px;
+}
+
+.habit, .your-habit, .habit-field, .info-title, .info {
+  font-family: 'Chivo', sans-serif;
+}
+
+.habit {
+  font-size: 24px;
+}
+
+.your-habit {
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.habit-field {
+  font-size: 10px;
+  min-width: 40px;
+  /* min-width: 92px; */
+  height: 28px;
+  padding: 5px;
+  /* margin: 5px; */
+  background: transparent;
+  border: 2px solid #6F8ACF;
+  box-sizing: border-box;
+  border-radius: 30px;
+  display: inline-block;
+}
+
+.info-title, .info {
+  font-size: 10px;
+}
+
+.info-title {
+  font-weight: bold;
+}
+
+.info {
+  font-weight: light;
 }
