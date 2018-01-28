@@ -112,6 +112,14 @@ button {
   font-size: 16px;
 }
 
+.visible-button {
+  position: absolute;
+  width: 214px;
+  height: 44px;
+  background: #FFFFFF;
+  border-radius: 30px;
+}
+
 .ui.labeled.icon.button {
   padding-left: 2.7em !important;
 }
