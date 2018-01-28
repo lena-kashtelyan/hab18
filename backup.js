@@ -22,9 +22,56 @@ const styles = {
     width: 200,
   },
 };
+
+const jar1 = {
+  'jar_name' : 'Hackhabit',
+  'my_habit' : 'biting nails',
+  'members' : '10',
+  'time' : '30',
+  'cost' : '2.00',
+  'dday' : '01/29/18'
+};
+const jar2 = {
+  'jar_name' : 'Hackhabit',
+  'my_habit' : 'biting nails',
+  'members' : '10',
+  'time' : '30',
+  'cost' : '2.00',
+  'dday' : '01/29/18'
+};
+const jar3 = {
+  'jar_name' : 'Hackhabit',
+  'my_habit' : 'biting nails',
+  'members' : '10',
+  'time' : '30',
+  'cost' : '2.00',
+  'dday' : '01/29/18'
+};
+
+const jars = [jar1, jar2, jar3];
+
 // <P5Wrapper sketch={sketchDesktop} />
 
 class App extends Component {
+
+  getDaysLeft(date) {
+    var one_day=1000*60*60*24;
+    var d = new Date(date);
+    var now = new Date();
+    var d_ms = d.getTime();
+    var now_ms = now.getTime();
+
+    // Calculate the difference in milliseconds
+    var difference_ms = d_ms - now_ms;
+
+    // Convert back to days and return
+    return Math.round(difference_ms/one_day);
+  }
+
+  getFormattedDate(date) {
+    var d = new Date(date);
+    return d.toLocaleDateString("en-US");
+  }
 
   getCarouselMobile(username) {
     return [1,2,3,4,5,6,7].map(
@@ -82,104 +129,34 @@ class App extends Component {
     );
   }
 
-  getDaysLeft(date) {
-    var one_day=1000*60*60*24;
-    var d = new Date(date);
-    var now = new Date();
-    var d_ms = d.getTime();
-    var now_ms = now.getTime();
-
-    // Calculate the difference in milliseconds
-    var difference_ms = d_ms - now_ms;
-
-    // Convert back to days and return
-    return Math.round(difference_ms/one_day);
-  }
-
-  getFormattedDate(date) {
-    var d = new Date(date);
-    return d.toLocaleDateString("en-US");
-  }
-
   getCarousel(username) {
-    var jars = [];
-    var members =
-      [{
-        name: 'Lena Kashtelyan',
-        swear: 'I would  like to sleep for 7 hours a day, and will contribute $5 dollars for each violation. ',
-        short: 'Sleep earlier',
-        violations: '5',
-        lastViolation: '01/28/2018',
-        ID: 1630522590340278,
-        profilePic: 'https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/13895390_1105627749496434_2240850528711628150_n.jpg?oh=2f01a985b7bb6fbe44f219bda4113d38&oe=5AE6FFD2'
-      },
-      {
-        name: 'Miranda Chao',
-        swear: 'I  am going to finally stop biting my nails! If I bite my nails, I will pay the violation',
-        short: 'Biting nails',
-        violations: '5',
-        lastViolation: '01/28/2018',
-        ID: 1630522590340278,
-        profilePic: 'https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/13895390_1105627749496434_2240850528711628150_n.jpg?oh=2f01a985b7bb6fbe44f219bda4113d38&oe=5AE6FFD2'
-      },
-      {
-        name: 'Josh Shao',
-        swear: 'I  would like to go to the gym every single day. If I miss once, I agree to pay the violation',
-        short: 'Gym',
-        violations: '5',
-        lastViolation: '01/28/2018',
-        ID: 1630522590340278,
-        profilePic: 'https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/13895390_1105627749496434_2240850528711628150_n.jpg?oh=2f01a985b7bb6fbe44f219bda4113d38&oe=5AE6FFD2'
-      },
-      {
-        name: 'Henry Song',
-        swear: 'I would like to quite smoking, and I hope I can get over with it this time.',
-        short: 'Smoking',
-        violations: '5',
-        lastViolation: '01/28/2018',
-        ID: 1630522590340278,
-        profilePic: 'https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/13895390_1105627749496434_2240850528711628150_n.jpg?oh=2f01a985b7bb6fbe44f219bda4113d38&oe=5AE6FFD2'
-      },
-    ];
-    var jar0 = {
-      jarName: 'Hackjar',
-      picture: 'https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/11059837_827334213992457_4153815542064113123_n.jpg?oh=6033bc25fe42bd7db0b12ee35393d168&oe=5ADD8F32',
-      members: '4',
-      time:'30',
-      cost: '2.00',
-      dday: '02/28/18',
-      currentBalance: '30.00',
-      settings: ['donate', 'continue'],
-      inside: members
+    const jar1 = {
+      'jar_name' : 'Hackhabit',
+      'my_habit' : 'biting nails',
+      'members' : '10',
+      'time' : '30',
+      'cost' : '2.00',
+      'dday' : '01/29/18'
     };
-    var jar1 = {
-      jarName: 'Famjar',
-      picture: 'https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/1554578_686969724695574_463223475449099609_n.jpg?oh=f4db36b5ca4bd91a5f0f3c5bbb504228&oe=5AE423ED',
-      members: '10',
-      time:'30',
-      cost: '5.00',
-      dday: '01/29/18',
-      currentBalance: '70.00',
-      settings: ['cash out', 'retire'],
-      inside: members
+    const jar2 = {
+      'jar_name' : 'Hackhabit',
+      'my_habit' : 'biting nails',
+      'members' : '10',
+      'time' : '30',
+      'cost' : '2.00',
+      'dday' : '01/29/18'
     };
-    var currUserID = 1630522590340278;
-    var currUserObj =
-      {
-        name: 'Lena Kashtelyan',
-        swear: 'I would  like to sleep for 7 hours a day, and will contribute $5 dollars for each violation. ',
-        short: 'Sleep earlier',
-        violations: '5',
-        lastViolation: '01/28/2018',
-        ID: 1630522590340278,
-        profilePic: 'https://scontent.fzty2-1.fna.fbcdn.net/v/t1.0-9/13895390_1105627749496434_2240850528711628150_n.jpg?oh=2f01a985b7bb6fbe44f219bda4113d38&oe=5AE6FFD2'
-      };
+    const jar3 = {
+      'jar_name' : 'Hackhabit',
+      'my_habit' : 'biting nails',
+      'members' : '10',
+      'time' : '30',
+      'cost' : '2.00',
+      'dday' : '01/29/18'
+    };
 
-    for (var i = 0; i < 3; i++) {
-      jars.push(jar0);
-      jars.push(jar1);
-    }
-    return jars.map(
+    const jars = [jar1, jar2, jar3];
+    return [jars].map(
       jar =>
         <div style={{
           width:'400px',
@@ -191,46 +168,44 @@ class App extends Component {
             <div style={{
               height:'500px',
               paddingTop:'70px',
-              paddingLeft:'70px',
-              paddingRight:'70px',
+              paddingLeft:'30px',
+              paddingRight:'30px',
               textAlign:'left',
             }}>
-              <span className="habit">{jar['jarName']}</span>
-              <br/>
+              <Flex justify='space-between'>
+                <span className="habit">{jar['jar_name']}</span>
+                <span className="">***</span>
+              </Flex>
               <br/>
               <span className="your-habit">Your habit</span>
               <br/>
-              <div className="habit-field">{currUserObj.short}</div>
+              <div className="habit-field">{jar['my_habit']}</div>
               <br/>
               <br/>
-              <div style={{
-                backgroundImage: 'url('+jar['picture']+')',
-                backgroundRepeat: 'no-repeat',
-                backgroundPosition: 'center',
-                backgroundSize: '300px 200px',
-                width:'300px',
-                height:'200px'}}/>
+              <div style={{background:'yellow', width:'300px', height:'200px'}}/>
               <br/>
               <Flex justify='space-between'>
                 <div className="info-title">
-                  Members<br/><span className="info">{jar['members'] + ' members'} </span>
+                  Members<br/><span className="info">{jar['members']+'members'}</span>
                 </div>
                 <div className="info-title">
-                  Committment<br/><span className="info">{jar['time'] + ' days'}</span>
+                  Committment<br/><span className="info">{jar['days']+'days'}</span>
                 </div>
                 <div className="info-title">
                   Cost per violation<br/><span className="info">{'$'+jar['cost']}</span>
                 </div>
               </Flex>
               <Flex style={{width:'300px', height:'10px'}}>
-                <Box w={2/3} style={{background:'#6F8ACF'}}/>
-                <Box w={1/3} style={{background:'#C4C4C4'}}/>
+                <Box w={2/3} style={{background:'blue'}}/>
+                <Box w={1/3} style={{background:'gray'}}/>
               </Flex>
               <div className="info-title">
                 d-day
                 <br/>
                 <span className="info">
-                  {this.getDaysLeft(jar['dday'])}<br/>{this.getFormattedDate(jar['dday'])}
+                  {this.getDaysLeft(jar['dday'])}
+                  <br/>
+                  {this.getFormattedDate(jar['dday'])}
                 </span>
               </div>
             </div>
@@ -326,7 +301,7 @@ class App extends Component {
 
   render() {
     if (this.state.loggedIn || this.state.username != 'lena') {
-      if (this.state.width < 460) {
+      if (this.state.width < 360) {
         var content = <Carousel content={this.getCarouselMobile(this.state.username)}/>;
         var header =
           <header className="App-header">
