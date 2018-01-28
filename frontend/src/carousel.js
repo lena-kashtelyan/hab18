@@ -24,6 +24,7 @@ class Carousel extends Component {
       // lazyLoad: true,
       pauseOnHover: true,
       responsive: [ { breakpoint: 768, settings: { slidesToShow: 1 } },
+                    { breakpoint: 1120, settings: { slidesToShow: 2 } },
                     { breakpoint: 1440, settings: { slidesToShow: 3 } },
                     { breakpoint: 100000, settings: { slidesToShow: 5 } } ],
       swipeToSlide: true,

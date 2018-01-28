@@ -49,7 +49,7 @@
 .slider {
   position: relative;
   display: block;
-  height: calc(100% - 58px);
+  height: calc(100% - 219px);
   width: 100%;
 }
 
@@ -78,6 +78,10 @@
   width: 80%;
   height: 80%;
   border: 1px solid black;
+}
+
+.slick-list {
+  margin-top: calc(50vh - 229px);
 }
 
 @keyframes App-logo-spin {
