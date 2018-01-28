@@ -20,14 +20,12 @@
   background-color: #FCF;
   height: 58px;
   color: white;
-  border: solid 1px black;
   display: flex;
   justify-content: space-between;
 }
 
 .under-top-bar {
   background-color: #CFF;
-  border: 1px solid black;
   position:absolute;
   height: calc(100vh - 58px);
   width:100%;
@@ -79,7 +77,6 @@
 .jar {
   width: 80%;
   height: 80%;
-  border: 1px solid black;
 }
 
 .slick-list {
@@ -92,6 +89,7 @@
 
 .ui.labeled.icon.button>.icon {
   background-color: transparent !important;
+  font-size:16px;
 }
 
 .ui.avatar.image {
@@ -114,6 +112,9 @@ button {
   font-size: 16px;
 }
 
+.ui.labeled.icon.button {
+  padding-left: 2.7em !important;
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
