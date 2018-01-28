@@ -130,7 +130,7 @@ button {
   font-size: 16px;
 }
 
-.visible-filed.placeholder {
+::placeholder {
   color: white;
 }
 
@@ -138,7 +138,7 @@ button {
   width: 300px;
   height: 44px;
   margin: 5px;
-  background: #FFFFFF;
+  background: #F2C94C;
   border-radius: 30px;
   font-family: 'Chivo', sans-serif;
   font-size: 16px;

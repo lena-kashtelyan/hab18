@@ -392,9 +392,9 @@ class App extends Component {
                 </Flex>
               </Flex>
               <Flex column justify="center" w={300}>
-                <img src={fistIcon} style={{margin: '5px', width:'40px', height:'40px'}} alt=''/>
+                
                 <div className="prompt">
-                  Come kick a bad habit with us
+                  Come kick a bad habit with us.
                 </div>
                 <form>
                   <input type="text" className="visible-field" placeholder="username" name="username" />
