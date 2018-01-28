@@ -22,13 +22,15 @@ const styles = {
   },
 };
 
+// <P5Wrapper sketch={sketchDesktop} />
+
 class App extends Component {
 
   getCarousel(username) {
     return [1,2,3,4,5,6,7].map(
       entry =>
-        <div>
-          <P5Wrapper sketch={sketchDesktop} />
+        <div style={{width:'400px', height:'600px', background: 'white'}}>
+          entry
         </div>
     );
   }
