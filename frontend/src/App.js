@@ -1,11 +1,26 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import FullPageHover from './full_page_hover.js';
+import JarPic from './jar.png';
 import UnderTopBar from './under_top_bar.js';
+import Carousel from './carousel.js';
+import Jar from './jar.js';
 import './App.css';
 var $ = require('jquery');
 
 class App extends Component {
+
+  getCarousel(username) {
+    return [1,2,3,4,5,6,7].map(
+      entry =>
+      <div>
+        <h1>{entry}</h1>
+        <div className='jarpic'>
+          <img className='jarpic-inside' src={JarPic} alt='jar'/>
+        </div>
+      </div>
+    );
+  }
 
   componentDidMount() {
     // $.ajax({
@@ -13,15 +28,19 @@ class App extends Component {
     //   data:JSON.stringify({username: "Lena"}),
     //   type:'POST',
     //   contentType:'application/json'
-    // }).done((data) => this.setState({loggedIn : data}));
-    this.setState({loggedIn: true});
+    // }).done((data) => this.setState({loggedIn : data, username: _______}));
+    this.setState({
+      loggedIn: true,
+      username: 'lena'
+    });
   }
 
   constructor(props) {
     super(props);
-    this.state = {loggedIn: false};
+    this.state = {loggedIn: false, carousel: []};
     // This binding is necessary to make `this` work in the callback
     this.getPythonHello = this.getPythonHello.bind(this);
+    this.getCarousel = this.getCarousel.bind(this);
   }
 
   getPythonHello() {
@@ -37,7 +56,7 @@ class App extends Component {
 
   render() {
     if (this.state.loggedIn) {
-      var content = <p>Homepage</p>;
+      var content = <Carousel content={this.getCarousel(this.state.username)}/>;
       return(
         <div className="App">
           <header className="App-header">

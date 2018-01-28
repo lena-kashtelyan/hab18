@@ -46,6 +46,40 @@
   background-color: #CCC;
 }
 
+.slider {
+  position: relative;
+  display: block;
+  height: calc(100% - 58px);
+  width: 100%;
+}
+
+.slick-prev, .slick-next {
+  width: 100px;
+}
+
+.slick-prev {
+  left: 0px;
+}
+
+.slick-next {
+  right: 0px;
+}
+
+.jarpic {
+  width: 120%;
+}
+
+.jarpic-inside {
+  width: 60%;
+  padding-left: 12.5%;
+}
+
+.jar {
+  width: 80%;
+  height: 80%;
+  border: 1px solid black;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
