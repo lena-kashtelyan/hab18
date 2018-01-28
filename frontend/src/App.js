@@ -13,6 +13,7 @@ import FacebookLogin from 'react-facebook-login';
 import fistIcon from './fist.svg';
 import cookie from 'react-cookies';
 import classNames from 'classnames';
+import homepageTemplate from './homepage_template.png';
 import jarOutline from './jar_outline.png';
 import jarBreakdown from './jar_breakdown.svg';
 import { Dropdown, Image } from 'semantic-ui-react';
@@ -341,6 +342,41 @@ class App extends Component {
 
   handleMenuChange = (event, index, value) => this.setState({value});
 
+  // <Flex style={{padding:'10px'}} className="white-card" justify="center" w={[1, 1/2, 1/3]}>
+  //   <Flex className="white-card">
+  //     <Flex column style={{paddingRight: '10px'}}>
+  //       <br/><br/><br/><br/>
+  //       <div style={{color: '#6FCF97'}}>{'10%  '}</div>
+  //       <br/><br/><br/>
+  //       <div style={{color: '#F2C94C'}}>{'20%  '}</div>
+  //       <br/><br/><br/><br/><br/><br/>
+  //       <div style={{color: '#F2994A'}}>{'29%  '}</div>
+  //       <br/><br/><br/><br/><br/><br/>
+  //       <div style={{color: '#EB5757'}}>{'41%  '}</div>
+  //     </Flex>
+  //     <Flex>
+  //       <img src={jarBreakdown} alt="jar breakdown"/>
+  //     </Flex>
+  //   </Flex>
+  //   <div className="jar-data">
+  //     <span style={{fontWeight: 'bold'}}>The Brown Jar</span>
+  //       <br/>
+  //     $70.00
+  //   </div>
+  // </Flex>
+  // <Flex onClick={this.removeSelectedJar} column style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
+  //   <Flex className="white-card" style={{width:'100%'}}>
+  //     bla
+  //   </Flex>
+  //   <Flex className="white-card">
+  //   </Flex>
+  // </Flex>
+  // <Flex column onClick={this.removeSelectedJar} style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
+  //   <Flex className="white-card">
+  //   </Flex>
+  //   <Flex className="white-card">
+  //   </Flex>
+  // </Flex>
 
   // <button onClick={this.getPythonHello}>{this.state.greeting}</button>
 
@@ -392,52 +428,9 @@ class App extends Component {
         if (this.state.selectedJar && this.state.showJar) {
             return(
               <div className="App">
-                {header}
-                <UnderTopBar content={
-                  <Flex onClick={this.removeSelectedJar} style={{width:'100%', paddingTop: '70px', paddingBottom: '70px', height:'calc(100vh - 58px)'}}>
-                    <Flex style={{padding:'10px'}} className="white-card" justify="center" w={[1, 1/2, 1/3]}>
-                      <Flex className="white-card">
-                        <Flex column>
-                          <Flex column style={{paddingRight: '10px'}}>
-                            <br/><br/><br/><br/>
-                            <div style={{color: '#6FCF97'}}>{'10%  '}</div>
-                            <br/><br/><br/>
-                            <div style={{color: '#F2C94C'}}>{'20%  '}</div>
-                            <br/><br/><br/><br/><br/><br/>
-                            <div style={{color: '#F2994A'}}>{'29%  '}</div>
-                            <br/><br/><br/><br/><br/><br/>
-                            <div style={{color: '#EB5757'}}>{'41%  '}</div>
-                          </Flex>
-                          <Flex>
-                            <img src={jarBreakdown} alt="jar breakdown"/>
-                          </Flex>
-                        </Flex>
-                      </Flex>
-                      <Flex justify="center">
-                        <Flex column>
-                          <div className="jar-data">
-                            <span style={{fontWeight: 'bold'}}>The Brown Jar</span>
-                              <br/>
-                            $70.00
-                          </div>
-                        </Flex>
-                      </Flex>
-                    </Flex>
-                    <Flex onClick={this.removeSelectedJar} column style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
-                      <Flex className="white-card" style={{width:'100%'}}>
-                        bla
-                      </Flex>
-                      <Flex className="white-card">
-                      </Flex>
-                    </Flex>
-                    <Flex column onClick={this.removeSelectedJar} style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
-                      <Flex className="white-card">
-                      </Flex>
-                      <Flex className="white-card">
-                      </Flex>
-                    </Flex>
-                  </Flex>
-                }/>
+                <Flex onClick={this.removeSelectedJar} style={{width:'100%', height:'100vh'}}>
+                  <img src={homepageTemplate} style={{width:'100%', height:'100wh)'}} alt="template"/>
+                </Flex>
               </div>
             );
         } else {
@@ -461,7 +454,10 @@ class App extends Component {
           <Flex style={{height:'100%'}} justify='left'>
             <Flex w={[1/4, 1/2, 1/2]} justify='flex-end' style={{paddingRight:'40px'}}>
               <Flex column justify='center'>
-                <img src={JarPic} alt='jar' style={{height:'420px'}}/>
+                <div>
+                  <P5Wrapper style={{position: 'relative', top: '400px'}} sketch={sketchDesktop} />
+                  <img src={JarPic} alt='jar' style={{height:'420px', position: 'relative', top: '-200px'}}/>
+                </div>
               </Flex>
             </Flex>
             <Flex column justify="center" w={300}>

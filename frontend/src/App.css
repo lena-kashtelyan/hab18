@@ -236,3 +236,9 @@ button {
 .jar-data {
   color: black;
 }
+
+canvas {
+  position: relative;
+  top: 360px;
+  left: 60px;
+}
