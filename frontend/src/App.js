@@ -137,15 +137,22 @@ class App extends Component {
     } else {
       var content = <p>Login</p>;
       return(
-        <FullPageHover content={
-          <FacebookLogin
-            appId="1806524619372303"
-            autoLoad={true}
-            fields="name,email,picture"
-            callback={this.getResponseFacebook}
-            cssClass="my-facebook-button-class"
-            icon="fa-facebook"/>}
-        />
+        <div className="App">
+          <header className="App-header">
+            <div className="logo">SWEARJAR</div>
+          </header>
+          <UnderTopBar content={
+            <FullPageHover content={
+              <FacebookLogin
+                appId="1806524619372303"
+                autoLoad={true}
+                fields="name,email,picture"
+                callback={this.getResponseFacebook}
+                cssClass="my-facebook-button-class"
+                icon="fa-facebook"/>}
+            />
+          }/>
+        </div>
       );
     }
   }
