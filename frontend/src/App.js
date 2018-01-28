@@ -84,7 +84,7 @@ class App extends Component {
   }
 
   getInJar(jar) {
-    this.setState({selectedJar: jar});
+    this.setState({selectedJar: jar, showJar: true});
   }
 
   getDaysLeft(date) {
@@ -201,6 +201,7 @@ class App extends Component {
               paddingLeft:'70px',
               paddingRight:'70px',
               textAlign:'left',
+              color:'black'
             }}>
               <span className="habit">{jar['jarName']}</span>
               <br/>
@@ -296,6 +297,11 @@ class App extends Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
+  removeSelectedJar() {
+    console.log('removing selected jar');
+    this.setState({selectedJar:{}, showJar: false});
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -310,7 +316,8 @@ class App extends Component {
       value: 1,
       width: 0,
       height: 0,
-      selectedJar: {}
+      selectedJar: {},
+      showJar: false
     };
     // This binding is necessary to make `this` work in the callback
     this.getPythonHello = this.getPythonHello.bind(this);
@@ -320,6 +327,7 @@ class App extends Component {
     this.getResponseFacebook = this.getResponseFacebook.bind(this);
     this.onLogout = this.onLogout.bind(this);
     this.getInJar = this.getInJar.bind(this);
+    this.removeSelectedJar = this.removeSelectedJar.bind(this);
   }
 
   getPythonHello() {
@@ -363,7 +371,7 @@ class App extends Component {
       } else {
         var header =
           <header className="App-header">
-          <div className="logo">SWEARJAR</div>
+          <div className="logo" onClick={this.removeSelectedJar}>SWEARJAR</div>
           <div className="topbar-right">
             <button className="topbar-button">forum</button>
             <button className="topbar-button">featured jars</button>
@@ -381,25 +389,48 @@ class App extends Component {
               </Dropdown.Menu>
             </Dropdown></div>
           </header>;
-        if (this.state.selectedJar) {
+        if (this.state.selectedJar && this.state.showJar) {
             return(
               <div className="App">
                 {header}
                 <UnderTopBar content={
-                  <Flex style={{width:'100%', paddingTop: '70px', paddingBottom: '70px', height:'calc(100vh - 58px)'}}>
+                  <Flex onClick={this.removeSelectedJar} style={{width:'100%', paddingTop: '70px', paddingBottom: '70px', height:'calc(100vh - 58px)'}}>
                     <Flex style={{padding:'10px'}} className="white-card" justify="center" w={[1, 1/2, 1/3]}>
                       <Flex className="white-card">
-                        <img src={jarBreakdown} alt="jar breakdown"/>
+                        <Flex column>
+                          <Flex column style={{paddingRight: '10px'}}>
+                            <br/><br/><br/><br/>
+                            <div style={{color: '#6FCF97'}}>{'10%  '}</div>
+                            <br/><br/><br/>
+                            <div style={{color: '#F2C94C'}}>{'20%  '}</div>
+                            <br/><br/><br/><br/><br/><br/>
+                            <div style={{color: '#F2994A'}}>{'29%  '}</div>
+                            <br/><br/><br/><br/><br/><br/>
+                            <div style={{color: '#EB5757'}}>{'41%  '}</div>
+                          </Flex>
+                          <Flex>
+                            <img src={jarBreakdown} alt="jar breakdown"/>
+                          </Flex>
+                        </Flex>
+                      </Flex>
+                      <Flex justify="center">
+                        <Flex column>
+                          <div className="jar-data">
+                            <span style={{fontWeight: 'bold'}}>The Brown Jar</span>
+                              <br/>
+                            $70.00
+                          </div>
+                        </Flex>
                       </Flex>
                     </Flex>
-                    <Flex column style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
+                    <Flex onClick={this.removeSelectedJar} column style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
                       <Flex className="white-card" style={{width:'100%'}}>
                         bla
                       </Flex>
                       <Flex className="white-card">
                       </Flex>
                     </Flex>
-                    <Flex column style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
+                    <Flex column onClick={this.removeSelectedJar} style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
                       <Flex className="white-card">
                       </Flex>
                       <Flex className="white-card">

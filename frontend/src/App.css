@@ -17,19 +17,20 @@
 .App-header {
   position: absolute;
   width: 100%;
-  background-color: #FCF;
+  background-color: #F2C94C;
   height: 58px;
-  color: white;
+  color: black;
   display: flex;
   justify-content: space-between;
 }
 
 .under-top-bar {
-  background-color: #CFF;
+  background-color: #2F80ED;
   position:absolute;
   height: calc(100vh - 58px);
   width:100%;
   top:58px;
+  color:white;
 }
 
 .App-title {
@@ -123,16 +124,24 @@ button {
   padding: 20px;
   margin: 5px;
   background: transparent;
-  border: solid black 1px;
+  border: solid white 2px;
   border-radius: 30px;
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
+}
+
+::placeholder {
+  color: white;
 }
 
 .visible-button {
   width: 300px;
   height: 44px;
   margin: 5px;
-  background: #FFFFFF;
+  background: #F2C94C;
   border-radius: 30px;
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
 }
 
 .ui.labeled.icon.button {
@@ -222,4 +231,8 @@ button {
 .white-card {
   background: #FFFFFF;
   border-radius: 10px;
+}
+
+.jar-data {
+  color: black;
 }
