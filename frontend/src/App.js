@@ -6,9 +6,11 @@ import UnderTopBar from './under_top_bar.js';
 import Carousel from './carousel.js';
 import Jar from './jar.js';
 import P5Wrapper from 'react-p5-wrapper';
+import  { Flex, Box } from 'reflexbox';
 import './App.css';
 import sketchDesktop from './sketch_desktop.js';
 import FacebookLogin from 'react-facebook-login';
+import fistIcon from './fist.svg';
 import cookie from 'react-cookies';
 import classNames from 'classnames';
 import { Dropdown, Image } from 'semantic-ui-react';
@@ -115,8 +117,8 @@ class App extends Component {
           <header className="App-header">
           <div className="logo">SWEARJAR</div>
           <div className="topbar-right">
-            <button>forum</button>
-            <button>featured jars</button>
+            <button className="topbar-button">forum</button>
+            <button className="topbar-button">featured jars</button>
             <Dropdown trigger={this.state.pic} floating labeled button
               className='icon'
               style={{float:'right', background:'transparent', backgroundColor: 'transparent'}}>
@@ -142,16 +144,35 @@ class App extends Component {
             <div className="logo">SWEARJAR</div>
           </header>
           <UnderTopBar content={
-            <FullPageHover content={
-              <FacebookLogin
-                appId="1806524619372303"
-                autoLoad={true}
-                fields="name,email,picture"
-                callback={this.getResponseFacebook}
-                cssClass="my-facebook-button-class"
-                icon="fa-facebook"/>}
-            />
-          }/>
+            <Flex style={{height:'100%'}} justify='left'>
+              <Flex w={[1/4, 1/2, 1/2]} justify='flex-end' style={{paddingRight:'40px'}}>
+                <Flex column justify='center'>
+                  <img src={JarPic} alt='jar' style={{height:'420px'}}/>
+                </Flex>
+              </Flex>
+              <Flex column justify="center" w={300}>
+                <img src={fistIcon} style={{margin: '5px', width:'40px', height:'40px'}} alt=''/>
+                <div className="prompt">
+                  Come kick a bad habit with us
+                </div>
+                <form>
+                  <input type="text" className="visible-field" placeholder="username" name="username" />
+                  <input type="password" className="visible-field" placeholder="passphrase" name="password" />
+                  <input type="submit" className="visible-button" value="submit" />
+                </form>
+                <div className="visible-button">
+                  <FacebookLogin
+                    appId="1806524619372303"
+                    autoLoad={true}
+                    fields="name,email,picture"
+                    textButton="  sign in with Facebook"
+                    callback={this.getResponseFacebook}
+                    cssClass="my-facebook-button-class"
+                    icon="fa-facebook"/>
+                </div>
+                <div className="link">Sign up</div>
+              </Flex>
+            </Flex>}/>
         </div>
       );
     }

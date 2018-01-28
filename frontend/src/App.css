@@ -43,7 +43,6 @@
 .full-page-hover {
   height: 100wh;
   width: 100wv;
-  background-color: #CCC;
 }
 
 .slider {
@@ -105,23 +104,57 @@
 }
 
 button {
-  padding:20px;
+  padding:13px;
   background: transparent;
   border: none;
   font-family: 'Chivo', sans-serif;
   font-size: 16px;
 }
 
-.visible-button {
-  position: absolute;
-  width: 214px;
+.topbar-button {
+  padding: 20px;
+}
+
+.visible-field {
+  width: 300px;
   height: 44px;
+  padding: 20px;
+  margin: 5px;
+  background: transparent;
+  border: solid black 1px;
+  border-radius: 30px;
+}
+
+.visible-button {
+  width: 300px;
+  height: 44px;
+  margin: 5px;
   background: #FFFFFF;
   border-radius: 30px;
 }
 
 .ui.labeled.icon.button {
   padding-left: 2.7em !important;
+}
+
+.prompt {
+  text-align: left;
+  margin: 5px;
+  line-height: 40px;
+  background: transparent;
+  font-family: 'Chivo', sans-serif;
+  font-size: 24px;
+}
+
+.link {
+  margin: 5px;
+  font-family: 'Chivo', sans-serif;
+  font-size: 16px;
+  text-align: left;
+}
+
+.link:hover, .topbar-button:hover {
+  text-decoration: underline;
 }
 
 @keyframes App-logo-spin {
