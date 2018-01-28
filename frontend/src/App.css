@@ -49,7 +49,7 @@
 .slider {
   position: relative;
   display: block;
-  height: calc(100% - 219px);
+  height: 100%;
   width: 100%;
 }
 
@@ -81,7 +81,14 @@
 }
 
 .slick-list {
-  margin-top: calc(50vh - 229px);
+  padding-top: calc(50vh - 229px) !important;
+  padding-bottom: auto !important;
+  margin-bottom: 0px;
+}
+
+.slick-dots {
+  bottom: 0px;
+  height: 58px;
 }
 
 .menu {
