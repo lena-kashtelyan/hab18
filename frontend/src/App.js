@@ -67,7 +67,7 @@ class App extends Component {
     this.setState({
       username: fbID,
       picURL: response.picture.data.url,
-      pic: <span><Image avatar src={''} /></span>,
+      pic: <span><Image avatar src={response.picture.data.url} /></span>,
       loggedIn: true,
     });
     return fbID;
@@ -81,7 +81,7 @@ class App extends Component {
       username: cookie.load('userId') || 'lena',
       picURL: '',
       pic: <span>
-              <Image avatar src={''} />
+              <Image small avatar src={''} />
            </span>,
       loaded: false,
       value: 1
@@ -113,20 +113,23 @@ class App extends Component {
       return(
         <div className="App">
           <header className="App-header">
-          <div>
-            <Dropdown trigger={this.state.pic} floating labeled button className='icon' style={{float:'right'}}>
+          <div className="logo">SWEARJAR</div>
+          <div className="topbar-right">
+            <button>forum</button>
+            <button>featured jars</button>
+            <Dropdown trigger={this.state.pic} floating labeled button
+              className='icon'
+              style={{float:'right', background:'transparent', backgroundColor: 'transparent'}}>
               <Dropdown.Menu className='left'>
                 <Dropdown.Item text='view profile' />
                 <Dropdown.Item text='past jars' />
                 <Dropdown.Item text='reminders' />
                 <Dropdown.Item text='settings'  />
-                <Dropdown.Item text='logout' />
                 <Dropdown.Divider />
                 <Dropdown.Item text='settings'  />
+                <Dropdown.Item text='sign out' onClick={this.onLogout}/>
               </Dropdown.Menu>
             </Dropdown></div>
-            <img src={logo} className="App-logo" alt="logo" />
-            <button onClick={this.onLogout}>sign out</button>
           </header>
           <UnderTopBar content={content}/>
         </div>
