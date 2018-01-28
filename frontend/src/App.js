@@ -10,7 +10,15 @@ import './App.css';
 import sketchDesktop from './sketch_desktop.js';
 import FacebookLogin from 'react-facebook-login';
 import cookie from 'react-cookies';
+import classNames from 'classnames';
+import { Dropdown, Image } from 'semantic-ui-react';
 var $ = require('jquery');
+
+const styles = {
+  customWidth: {
+    width: 200,
+  },
+};
 
 class App extends Component {
 
@@ -59,6 +67,7 @@ class App extends Component {
     this.setState({
       username: fbID,
       picURL: response.picture.data.url,
+      pic: <span><Image avatar src={''} /></span>,
       loggedIn: true,
     });
     return fbID;
@@ -71,7 +80,11 @@ class App extends Component {
       carousel: [],
       username: cookie.load('userId') || 'lena',
       picURL: '',
-      loaded: false
+      pic: <span>
+              <Image avatar src={''} />
+           </span>,
+      loaded: false,
+      value: 1
     };
     // This binding is necessary to make `this` work in the callback
     this.getPythonHello = this.getPythonHello.bind(this);
@@ -89,6 +102,9 @@ class App extends Component {
     }).done((data) => console.log('server responded w data: ', data));
   }
 
+  handleMenuChange = (event, index, value) => this.setState({value});
+
+
   // <button onClick={this.getPythonHello}>{this.state.greeting}</button>
 
   render() {
@@ -97,6 +113,18 @@ class App extends Component {
       return(
         <div className="App">
           <header className="App-header">
+          <div>
+            <Dropdown trigger={this.state.pic} floating labeled button className='icon' style={{float:'right'}}>
+              <Dropdown.Menu className='left'>
+                <Dropdown.Item text='view profile' />
+                <Dropdown.Item text='past jars' />
+                <Dropdown.Item text='reminders' />
+                <Dropdown.Item text='settings'  />
+                <Dropdown.Item text='logout' />
+                <Dropdown.Divider />
+                <Dropdown.Item text='settings'  />
+              </Dropdown.Menu>
+            </Dropdown></div>
             <img src={logo} className="App-logo" alt="logo" />
             <button onClick={this.onLogout}>sign out</button>
           </header>
