@@ -14,6 +14,7 @@ import fistIcon from './fist.svg';
 import cookie from 'react-cookies';
 import classNames from 'classnames';
 import jarOutline from './jar_outline.png';
+import jarBreakdown from './jar_breakdown.svg';
 import { Dropdown, Image } from 'semantic-ui-react';
 var $ = require('jquery');
 
@@ -80,6 +81,10 @@ class App extends Component {
             </div>
         </div>
     );
+  }
+
+  getInJar(jar) {
+    this.setState({selectedJar: jar});
   }
 
   getDaysLeft(date) {
@@ -181,7 +186,9 @@ class App extends Component {
     }
     return jars.map(
       jar =>
-        <div style={{
+        <div
+        onClick={this.getInJar}
+        style={{
           width:'400px',
           height:'600px',
           backgroundImage: `url(${jarOutline})`,
@@ -233,6 +240,9 @@ class App extends Component {
                   {this.getDaysLeft(jar['dday'])}<br/>{this.getFormattedDate(jar['dday'])}
                 </span>
               </div>
+              <Flex justify="center">
+                <div className="violation">+ User violation</div>
+              </Flex>
             </div>
         </div>
     );
@@ -299,7 +309,8 @@ class App extends Component {
       loaded: false,
       value: 1,
       width: 0,
-      height: 0
+      height: 0,
+      selectedJar: {}
     };
     // This binding is necessary to make `this` work in the callback
     this.getPythonHello = this.getPythonHello.bind(this);
@@ -308,6 +319,7 @@ class App extends Component {
     this.getCarouselMobile = this.getCarouselMobile.bind(this);
     this.getResponseFacebook = this.getResponseFacebook.bind(this);
     this.onLogout = this.onLogout.bind(this);
+    this.getInJar = this.getInJar.bind(this);
   }
 
   getPythonHello() {
@@ -349,75 +361,105 @@ class App extends Component {
             </Dropdown></div>
           </header>;
       } else {
-        var content = <Carousel content={this.getCarousel(this.state.username)}/>;
         var header =
-        <header className="App-header">
-        <div className="logo">SWEARJAR</div>
-        <div className="topbar-right">
-          <button className="topbar-button">forum</button>
-          <button className="topbar-button">featured jars</button>
-          <Dropdown trigger={this.state.pic} floating labeled button
-            className='icon'
-            style={{float:'right', background:'transparent', backgroundColor: 'transparent'}}>
-            <Dropdown.Menu className='left'>
-              <Dropdown.Item text='view profile' />
-              <Dropdown.Item text='past jars' />
-              <Dropdown.Item text='reminders' />
-              <Dropdown.Item text='settings'  />
-              <Dropdown.Divider />
-              <Dropdown.Item text='settings'  />
-              <Dropdown.Item text='sign out' onClick={this.onLogout}/>
-            </Dropdown.Menu>
-          </Dropdown></div>
-        </header>;
-      }
-      return(
-        <div className="App">
-          {header}
-          <UnderTopBar content={content}/>
-        </div>
-      );
-    } else {
-      var content = <p>Login</p>;
-      return(
-        <div className="App">
           <header className="App-header">
-            <div className="logo">SWEARJAR</div>
-          </header>
-          <UnderTopBar content={
-            <Flex style={{height:'100%'}} justify='left'>
-              <Flex w={[1/4, 1/2, 1/2]} justify='flex-end' style={{paddingRight:'40px'}}>
-                <Flex column justify='center'>
-                  <img src={JarPic} alt='jar' style={{height:'420px'}}/>
-                </Flex>
-              </Flex>
-              <Flex column justify="center" w={300}>
-                <img src={fistIcon} style={{margin: '5px', width:'40px', height:'40px'}} alt=''/>
-                <div className="prompt">
-                  Come kick a bad habit with us
-                </div>
-                <form>
-                  <input type="text" className="visible-field" placeholder="username" name="username" />
-                  <input type="password" className="visible-field" placeholder="passphrase" name="password" />
-                  <input type="submit" className="visible-button" value="submit" />
-                </form>
-                <div className="visible-button">
-                  <FacebookLogin
-                    appId="1806524619372303"
-                    autoLoad={true}
-                    fields="name,email,picture"
-                    textButton="  sign in with Facebook"
-                    callback={this.getResponseFacebook}
-                    cssClass="my-facebook-button-class"
-                    icon="fa-facebook"/>
-                </div>
-                <div className="link">Sign up</div>
-              </Flex>
-            </Flex>}/>
-        </div>
-      );
+          <div className="logo">SWEARJAR</div>
+          <div className="topbar-right">
+            <button className="topbar-button">forum</button>
+            <button className="topbar-button">featured jars</button>
+            <Dropdown trigger={this.state.pic} floating labeled button
+              className='icon'
+              style={{float:'right', background:'transparent', backgroundColor: 'transparent'}}>
+              <Dropdown.Menu className='left'>
+                <Dropdown.Item text='view profile' />
+                <Dropdown.Item text='past jars' />
+                <Dropdown.Item text='reminders' />
+                <Dropdown.Item text='settings'  />
+                <Dropdown.Divider />
+                <Dropdown.Item text='settings'  />
+                <Dropdown.Item text='sign out' onClick={this.onLogout}/>
+              </Dropdown.Menu>
+            </Dropdown></div>
+          </header>;
+        if (this.state.selectedJar) {
+            return(
+              <div className="App">
+                {header}
+                <UnderTopBar content={
+                  <Flex style={{width:'100%', paddingTop: '70px', paddingBottom: '70px', height:'calc(100vh - 58px)'}}>
+                    <Flex style={{padding:'10px'}} className="white-card" justify="center" w={[1, 1/2, 1/3]}>
+                      <Flex className="white-card">
+                        <img src={jarBreakdown} alt="jar breakdown"/>
+                      </Flex>
+                    </Flex>
+                    <Flex column style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
+                      <Flex className="white-card" style={{width:'100%'}}>
+                        bla
+                      </Flex>
+                      <Flex className="white-card">
+                      </Flex>
+                    </Flex>
+                    <Flex column style={{padding:'10px'}} w={[1, 1/2, 1/3]}>
+                      <Flex className="white-card">
+                      </Flex>
+                      <Flex className="white-card">
+                      </Flex>
+                    </Flex>
+                  </Flex>
+                }/>
+              </div>
+            );
+        } else {
+          var content = <Carousel content={this.getCarousel(this.state.username)}/>;
+          return(
+            <div className="App">
+              {header}
+              <UnderTopBar content={content}/>
+            </div>
+          );
+        }
     }
+  } else {
+    var content = <p>Login</p>;
+    return(
+      <div className="App">
+        <header className="App-header">
+          <div className="logo">SWEARJAR</div>
+        </header>
+        <UnderTopBar content={
+          <Flex style={{height:'100%'}} justify='left'>
+            <Flex w={[1/4, 1/2, 1/2]} justify='flex-end' style={{paddingRight:'40px'}}>
+              <Flex column justify='center'>
+                <img src={JarPic} alt='jar' style={{height:'420px'}}/>
+              </Flex>
+            </Flex>
+            <Flex column justify="center" w={300}>
+              <img src={fistIcon} style={{margin: '5px', width:'40px', height:'40px'}} alt=''/>
+              <div className="prompt">
+                Come kick a bad habit with us
+              </div>
+              <form>
+                <input type="text" className="visible-field" placeholder="username" name="username" />
+                <input type="password" className="visible-field" placeholder="passphrase" name="password" />
+                <input type="submit" className="visible-button" value="submit" />
+              </form>
+              <div className="visible-button">
+                <FacebookLogin
+                  appId="1806524619372303"
+                  autoLoad={true}
+                  fields="name,email,picture"
+                  textButton="  sign in with Facebook"
+                  callback={this.getResponseFacebook}
+                  cssClass="my-facebook-button-class"
+                  icon="fa-facebook"/>
+              </div>
+              <div className="link">Sign up</div>
+            </Flex>
+          </Flex>}/>
+      </div>
+    );
   }
+}
 }
 
 export default App;

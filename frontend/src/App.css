@@ -168,7 +168,7 @@ button {
   bottom: 12px;
 }
 
-.habit, .your-habit, .habit-field, .info-title, .info {
+.habit, .your-habit, .habit-field, .info-title, .info, .violation {
   font-family: 'Chivo', sans-serif;
 }
 
@@ -205,4 +205,21 @@ button {
 
 .info {
   font-weight: light;
+}
+
+.violation {
+  width: 148px;
+  height: 30px;
+  left: 595px;
+  top: 768px;
+  background: #F27777;
+  border-radius: 30px;
+  color: white;
+  text-align: center;
+  padding: 5px;
+}
+
+.white-card {
+  background: #FFFFFF;
+  border-radius: 10px;
 }
